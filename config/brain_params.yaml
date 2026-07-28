@@ -1,0 +1,9 @@
+/**:
+  ros__parameters:
+    ollama_url: "http://localhost:11434/api/generate"
+    ollama_model: "llama3"
+    graph_path: "/tmp/adaptive_mind_2501_graph.json"
+    proactive_tick_period: 15.0
+    battery_low_threshold: 20.0
+    idle_timeout_sec: 30.0
+    status_period: 2.0

@@ -1,0 +1,68 @@
+# --- Project 2501 / adaptive_mind_2501 ---
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+.Python
+pip-wheel-metadata/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+ros2_env/
+
+# Test / coverage / type tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.cache/
+
+# ROS 2 / colcon artifacts
+install/
+log/
+.colcon/
+COLCON_IGNORE
+
+# Runtime graph dumps (persist path defaults under /tmp; ignore local copies)
+*_graph.json
+/tmp/adaptive_mind_2501_graph.json
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Misc local
+*.log
+*.bak
+*.tmp

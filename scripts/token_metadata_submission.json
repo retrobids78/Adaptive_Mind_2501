@@ -1,0 +1,22 @@
+{
+  "contract_address": "0x3daeff71F424859728dBB6bB690A19879E1a6714",
+  "token_name": "OmniMind Network",
+  "ticker": "OMNI",
+  "symbol": "OMNI",
+  "project_name": "Adaptive Mind 2501",
+  "website": "https://github.com/retrobids78/Adaptive_Mind_2501",
+  "official_project_website": "https://github.com/retrobids78/Adaptive_Mind_2501",
+  "description": "Universal Cognitive Memory Layer and Knowledge-Exchange Utility Token for ROS 2 Humanoid Robotics (Adaptive Mind 2501).",
+  "ecosystem": "Polygon",
+  "chain_id": 137,
+  "token_standard": "ERC-20",
+  "categories": [
+    "Robotics",
+    "AI",
+    "DePIN"
+  ],
+  "project_sector": "Robotics / AI / DePIN",
+  "explorer_url": "https://polygonscan.com/token/0x3daeff71F424859728dBB6bB690A19879E1a6714",
+  "github": "https://github.com/retrobids78/Adaptive_Mind_2501",
+  "notes": "Prepared for PolygonScan Token Info Update form. Verify contract ownership and publish source code before submitting at https://polygonscan.com/contactus?id=6"
+}

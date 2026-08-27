@@ -132,11 +132,24 @@ Adaptive_Mind_2501/
 ├── config/                 # ROS parameters
 ├── launch/                 # brain.launch.py
 ├── resource/               # ament index marker
+├── scripts/                # tooling (e.g. PolygonScan token metadata)
 ├── package.xml
 ├── setup.py / setup.cfg
 ├── LICENSE                 # Apache-2.0
 └── README.md
 ```
+
+---
+
+## Token Ecosystem & Peer-to-Peer Memory Exchange ($OMNI)
+
+1. **Adaptive Mind 2501 core is free.** The ROS 2 package is **100% free and open-source under Apache 2.0** and runs **fully offline** — no cloud account, no wallet, and no token required for Dialogue Parser, Knowledge Engine, Task Planner, Safety Governor, or Proactive Engine.
+
+2. **`$OMNI` is an optional utility layer.** On Polygon (`0x3daeff71F424859728dBB6bB690A19879E1a6714`), `$OMNI` can unlock signing, exporting, and exchanging pre-trained semantic knowledge graphs between nodes (Knowledge Engine / local Web3 tier verifier). Holding or using the token is never required to run the robot stack.
+
+3. **Contribute maps, earn tokens.** Users can earn `$OMNI` by contributing local semantic maps (Knowledge Engine graphs) to the community repository, enabling peer-to-peer memory exchange across Adaptive Mind deployments.
+
+Metadata for PolygonScan submission lives in [`scripts/token_metadata_submission.json`](scripts/token_metadata_submission.json).
 
 ---
 

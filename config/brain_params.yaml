@@ -7,3 +7,8 @@
     battery_low_threshold: 20.0
     idle_timeout_sec: 30.0
     status_period: 2.0
+    # Local Web3 tier (Polygon OMNI) — empty wallet => COMMUNITY fallback
+    wallet_address: ""
+    contribution_proof_path: ""
+    omni_pro_threshold: 1000
+    omni_token_contract: "0x3daeff71F424859728dBB6bB690A19879E1a6714"

@@ -160,7 +160,12 @@ class GraphMemory:
     # Persistence
     # ------------------------------------------------------------------ #
     def save_to_json(self, filepath: Optional[str] = None) -> None:
-        """Serialize nodes and edges to JSON."""
+        """Serialize nodes and edges to JSON.
+
+        COMMUNITY tier writes the compact custom ``{nodes, edges}`` schema.
+        ``PRO_MEMORY`` (local Web3 verifier) also writes an extended NetworkX
+        node-link companion file with suffix ``.networkx.json``.
+        """
         path = self._resolve_path(filepath)
         if path is None:
             raise ValueError('No filepath provided and persist_path is not set')
@@ -185,6 +190,59 @@ class GraphMemory:
             encoding='utf-8',
         )
         logger.info('GraphMemory saved to %s', path)
+
+        # Extended NetworkX export is gated by local Web3 tier (never raises)
+        try:
+            from adaptive_mind_2501.knowledge_engine.web3_verifier import (
+                can_export_extended_networkx,
+            )
+
+            if can_export_extended_networkx():
+                self.save_extended_networkx_json(path.with_suffix('.networkx.json'))
+        except Exception as exc:  # noqa: BLE001
+            logger.debug('Extended NetworkX export skipped: %s', exc)
+
+    def save_extended_networkx_json(self, filepath: Optional[str] = None) -> bool:
+        """Write NetworkX node-link JSON when tier is ``PRO_MEMORY``.
+
+        Returns True if the extended file was written. Offline / COMMUNITY /
+        RPC failure returns False without raising.
+        """
+        try:
+            from adaptive_mind_2501.knowledge_engine.web3_verifier import (
+                can_export_extended_networkx,
+            )
+
+            if not can_export_extended_networkx():
+                logger.info(
+                    'GraphMemory: extended NetworkX export requires PRO_MEMORY'
+                )
+                return False
+        except Exception as exc:  # noqa: BLE001
+            logger.warning('GraphMemory: tier check failed, skip extended export: %s', exc)
+            return False
+
+        path = self._resolve_path(filepath)
+        if path is None:
+            logger.warning('GraphMemory: no path for extended NetworkX export')
+            return False
+
+        try:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            # edges="links" keeps compatibility with nx.node_link_graph()
+            try:
+                payload = nx.node_link_data(self.graph, edges='links')
+            except TypeError:
+                payload = nx.node_link_data(self.graph)
+            path.write_text(
+                json.dumps(payload, indent=2, ensure_ascii=False, default=str),
+                encoding='utf-8',
+            )
+            logger.info('GraphMemory extended NetworkX export written to %s', path)
+            return True
+        except Exception as exc:  # noqa: BLE001
+            logger.warning('GraphMemory extended NetworkX export failed: %s', exc)
+            return False
 
     def load_from_json(self, filepath: Optional[str] = None) -> None:
         """Deserialize graph from JSON if the file exists; no-op / empty on miss."""
